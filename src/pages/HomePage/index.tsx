@@ -42,14 +42,6 @@ const HomePage: React.FC = () => {
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
-    useDebounce(
-        () => {
-            setIsUndobarOpen(false);
-        },
-        5000,
-        [isUndobarOpen]
-    );
-
     return (
         <>
             <NavbarWithInputSearch

@@ -74,7 +74,6 @@ const ClothingPage: React.FC = () => {
             addClothing(modifiedClothing);
             toast.success("Successfully added");
         } else {
-            // modify an existing clothing
             modifyClothingProperties(clothing, {
                 ...modifiedClothing,
             });
