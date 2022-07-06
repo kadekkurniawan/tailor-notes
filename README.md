@@ -1,1 +1,1 @@
-## This project is specifically fo tailor
+## This project is specifically designed fof tailor
