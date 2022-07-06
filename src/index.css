@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Slabo+27px&family=Space+Mono&display=swap");
+
+@layer components {
+    .center-children {
+        @apply grid place-items-center;
+    }
+
+    .navbar-container {
+        @apply fixed top-0 left-0 w-screen z-30 py-3 px-4 backdrop-blur shadow-lg lg:px-6 lg:py-4;
+    }
+
+    .slate-700-border {
+        @apply border border-slate-700 border-solid;
+    }
+
+    .extra-small-padding {
+        @apply py-1 px-2;
+    }
+
+    .small-padding {
+        @apply py-2 px-3;
+    }
+
+    .medium-padding {
+        @apply py-3 px-4;
+    }
+
+    .grid-column-list {
+        @apply grid gap-4 lg:grid-cols-2 xl:grid-cols-3;
+    }
+
+    .social-media-icon {
+        @apply hover:bg-slate-800 transition h-8 center-children aspect-square rounded text-lg;
+    }
+
+    .center-children-using-flex-box {
+        @apply flex justify-center items-center;
+    }
+
+    .text-list-item {
+        @apply text-sm font-sans transition font-medium text-slate-400 extra-small-padding hover:text-slate-300;
+    }
+
+    .list-item-with-icon-at-right-side {
+        @apply bg-slate-800 transition hover:bg-slate-700 flex justify-between items-center small-padding slate-700-border rounded-lg relative cursor-pointer;
+    }
+
+    .button-icon {
+        @apply md:h-10 aspect-square hover:bg-slate-800 rounded-md center-children;
+    }
+
+    .semibold-text {
+        @apply text-slate-400 text-sm font-semibold font-sans;
+    }
+
+    .small-input {
+        @apply bg-slate-900 focus:border-indigo transition slate-700-border outline-none extra-small-padding font-sans font-medium text-sm rounded text-slate-400;
+    }
+
+    .medium-input {
+        @apply w-full focus:border-indigo transition slate-700-border outline-none text-sm small-padding rounded-md placeholder-slate-500 font-sans font-medium text-slate-300;
+    }
+}
+
+@layer base {
+    p {
+        @apply font-sans font-medium text-slate-400;
+    }
+
+    button {
+        @apply cursor-pointer;
+    }
+
+    h2 {
+        @apply font-semibold text-slate-300 font-sans;
+    }
+}
