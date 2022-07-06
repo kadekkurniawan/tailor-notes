@@ -9,7 +9,7 @@ import ClothingsTrashList from "./ClothingsTrashList";
 import { ClothingStore, useClothingStore } from "../../store/clothing";
 import { NoteStore, useNoteStore } from "../../store/note";
 
-const TrashsPage = () => {
+const TrashsPage: React.FC = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
     const [querySearch, setQuerySearch] = useState("");
@@ -29,7 +29,7 @@ const TrashsPage = () => {
 
             {isSidebarOpen && <Sidebar setIsSidebarOpen={setIsSidebarOpen} />}
 
-            <section>
+            <main>
                 <div className="container">
                     <nav className="sticky top-16 flex divide-x divide-slate-700">
                         <Link
@@ -50,7 +50,7 @@ const TrashsPage = () => {
 
                     <Outlet />
                 </div>
-            </section>
+            </main>
         </>
     );
 };

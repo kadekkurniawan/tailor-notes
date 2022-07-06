@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 import {
     useParams,
@@ -15,7 +15,6 @@ import NoteNavbar from "./NoteNavbar";
 import Error from "../../components/Error";
 import { findListItem, replaceListItem } from "../../helpers";
 import Label from "../../components/Label";
-import { useElementSize } from "../../hooks";
 
 const NotePage: React.FC = () => {
     const navigate: NavigateFunction = useNavigate();

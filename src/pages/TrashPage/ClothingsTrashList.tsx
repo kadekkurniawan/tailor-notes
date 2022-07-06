@@ -42,45 +42,37 @@ const ClothingsTrashList: React.FC<ClothingsTrashListProps> = ({
 
     return (
         <>
-            <main>
-                <div>
-                    <ul>
-                        {filteredClothingsTrash.map((clothing: Clothing) => (
-                            <ClothingListItem
-                                clothingOptions={
-                                    <>
-                                        <li
-                                            onClick={() => {
-                                                restoreClothingById(
-                                                    clothing.id!
-                                                );
-                                                setIsUndobarOpen(true);
-                                            }}
-                                        >
-                                            Restore
-                                        </li>
-                                        <li
-                                            onClick={() =>
-                                                deleteClothingTrashById(
-                                                    clothing.id!
-                                                )
-                                            }
-                                        >
-                                            Delete forever
-                                        </li>
-                                    </>
-                                }
-                                onClickListItem={() =>
-                                    toast.info(
-                                        "You can't view note on trash, restore the note if you want to view it"
-                                    )
-                                }
-                                clothing={clothing}
-                            />
-                        ))}
-                    </ul>
-                </div>
-            </main>
+            <ul className="grid-column-list">
+                {filteredClothingsTrash.map((clothing: Clothing) => (
+                    <ClothingListItem
+                        clothingOptions={
+                            <>
+                                <li
+                                    onClick={() => {
+                                        restoreClothingById(clothing.id!);
+                                        setIsUndobarOpen(true);
+                                    }}
+                                >
+                                    Restore
+                                </li>
+                                <li
+                                    onClick={() =>
+                                        deleteClothingTrashById(clothing.id!)
+                                    }
+                                >
+                                    Delete forever
+                                </li>
+                            </>
+                        }
+                        onClickListItem={() =>
+                            toast.info(
+                                "You can't view note on trash, restore the note if you want to view it"
+                            )
+                        }
+                        clothing={clothing}
+                    />
+                ))}
+            </ul>
 
             {isUndobarOpen && (
                 <Undobar

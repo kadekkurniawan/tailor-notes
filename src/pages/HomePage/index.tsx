@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 
 import { useNavigate, Link } from "react-router-dom";
-//import { useDebounce } from "react-use";
+import { useDebounce } from "react-use";
 
 import { searchListItems } from "../../helpers";
 import { NoteListItem } from "../../components/ListItem";
@@ -10,7 +10,6 @@ import Icon from "../../components/Icon";
 import Sidebar from "../../components/Sidebar";
 import { NavbarWithInputSearch } from "../../components/Navbar";
 import Undobar from "../../components/Undobar";
-import { useDebounce } from "react-use";
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();

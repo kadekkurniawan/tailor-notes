@@ -83,13 +83,8 @@ const SelectClothingPage: React.FC = () => {
         querySearch
     );
 
-    // useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen === true]);
-
     const [, cancelDebounce] = useDebounce(
-        () => {
-            console.log("work");
-            setIsUndobarOpen(false);
-        },
+        () => setIsUndobarOpen(false),
         5000,
         [isUndobarOpen]
     );

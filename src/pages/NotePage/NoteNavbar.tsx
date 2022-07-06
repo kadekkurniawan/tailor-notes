@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useMeasure } from "react-use";
-
 import Select from "../../components/Select";
 import Label from "../../components/Label";
 import { Note } from "../../store/note";
@@ -12,7 +10,6 @@ import {
     useSewingInfoStore,
 } from "../../store/clothing";
 import Icon from "../../components/Icon";
-import { Input } from "../../components/Input";
 import { InputWithBottomBorder } from "../../components/Input";
 
 interface NoteNavbarProps {

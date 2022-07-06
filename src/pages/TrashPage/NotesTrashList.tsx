@@ -32,40 +32,30 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
 
     return (
         <>
-            <main>
-                <div>
-                    <ul>
-                        {filteredNotesTrash.map((note: Note) => (
-                            <NoteListItem
-                                note={note}
-                                onClickListItem={() =>
-                                    toast.info(
-                                        "You can't view note on trash, restore the note if you want to view it"
-                                    )
-                                }
-                                noteOptions={
-                                    <>
-                                        <li
-                                            onClick={() =>
-                                                restoreNoteById(note.id)
-                                            }
-                                        >
-                                            Restore
-                                        </li>
-                                        <li
-                                            onClick={() =>
-                                                deleteNoteTrashById(note.id)
-                                            }
-                                        >
-                                            Delete Forever
-                                        </li>
-                                    </>
-                                }
-                            />
-                        ))}
-                    </ul>
-                </div>
-            </main>
+            <ul>
+                {filteredNotesTrash.map((note: Note) => (
+                    <NoteListItem
+                        note={note}
+                        onClickListItem={() =>
+                            toast.info(
+                                "You can't view note on trash, restore the note if you want to view it"
+                            )
+                        }
+                        noteOptions={
+                            <>
+                                <li onClick={() => restoreNoteById(note.id)}>
+                                    Restore
+                                </li>
+                                <li
+                                    onClick={() => deleteNoteTrashById(note.id)}
+                                >
+                                    Delete Forever
+                                </li>
+                            </>
+                        }
+                    />
+                ))}
+            </ul>
 
             {isUndobarOpen && (
                 <Undobar

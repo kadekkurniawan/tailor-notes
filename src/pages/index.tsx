@@ -10,7 +10,7 @@ import ClothingPage from "./ClothingPage";
 import TrashPage, { NotesTrashList, ClothingsTrashList } from "./TrashPage";
 import SettingsPage from "./SettingsPage";
 
-const Pages = () => {
+const Pages: React.FC = () => {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
