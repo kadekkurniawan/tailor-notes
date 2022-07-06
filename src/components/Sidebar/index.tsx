@@ -1,9 +1,6 @@
 import React, { useRef, useState } from "react";
+
 import { Link, useLocation } from "react-router-dom";
-// need to use this library when i have a laptop
-// because if i run this in dcoder my storage limit will full
-// and if my storage limit has been reach i can't run the code in dcoder
-// import OutsideClickHandler from 'react-outside-click-handler';
 import { useClickAway } from "react-use";
 
 import Icon from "../../components/Icon";

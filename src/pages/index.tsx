@@ -24,7 +24,7 @@ const Pages: React.FC = () => {
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/trash" element={<TrashPage />}>
                 <Route path="notes" element={<NotesTrashList />} />
-                <Route path="clothing" element={<ClothingsTrashList />} />
+                <Route path="clothings" element={<ClothingsTrashList />} />
             </Route>
             <Route path="*" element={<PageNotFound />} />
         </Routes>

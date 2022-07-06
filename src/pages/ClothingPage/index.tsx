@@ -106,7 +106,10 @@ const ClothingPage: React.FC = () => {
                 <div className="container">
                     <ul className="grid-column-list">
                         {modifiedClothing.sizings.map((sizing: Sizing) => (
-                            <li className="list-item-with-icon-at-right-side">
+                            <li
+                                key={sizing.id}
+                                className="list-item-with-icon-at-right-side"
+                            >
                                 <span className="semibold-text">
                                     {sizing.measuredPart}
                                 </span>
