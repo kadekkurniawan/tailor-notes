@@ -73,7 +73,7 @@ const noteStore = (set: any, get: any): NoteStore => ({
         }));
     },
     undoRestoreNote: () => {
-        const previouslyRestoredNote: Note = get().notes.trash.at(0);
+        const previouslyRestoredNote: Note = get().notes.data.at(0);
 
         set((state: NoteStore) => ({
             notes: {

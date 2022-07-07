@@ -104,8 +104,7 @@ const clothingStore = (set: any, get: any): ClothingStore => ({
         }));
     },
     undoRestoreClothing: () => {
-        const previouslyRestoredClothing: Clothing =
-            get().clothings.trash.at(0);
+        const previouslyRestoredClothing: Clothing = get().clothings.data.at(0);
 
         set((state: ClothingStore) => ({
             clothings: {
