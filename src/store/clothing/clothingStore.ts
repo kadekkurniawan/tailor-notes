@@ -30,6 +30,32 @@ const initialClothings: Clothing[] = [
             { measuredPart: "Wrist Around", size: "", id: uuidv4() },
         ],
     },
+    {
+        type: "Suit Jacket",
+        id: uuidv4(),
+        sizings: [
+            { measuredPart: "Jacket Length", size: "", id: uuidv4() },
+            { measuredPart: "Crown to Cuff", size: "", id: uuidv4() },
+            { measuredPart: "Half Back", size: "", id: uuidv4() },
+            { measuredPart: "Chest", size: "", id: uuidv4() },
+            { measuredPart: "Jacket Waist", size: "", id: uuidv4() },
+        ],
+    },
+    {
+        type: "Long Pants",
+        id: uuidv4(),
+        sizings: [
+            { measuredPart: "Waist Width", size: "", id: uuidv4() },
+            { measuredPart: "Hip Width", size: "", id: uuidv4() },
+            { measuredPart: "Thigh Width", size: "", id: uuidv4() },
+            { measuredPart: "Knee Width", size: "", id: uuidv4() },
+            { measuredPart: "Leg Opening Width", size: "", id: uuidv4() },
+            { measuredPart: "Front Rise", size: "", id: uuidv4() },
+            { measuredPart: "Back Rise", size: "", id: uuidv4() },
+            { measuredPart: "Inseam Length", size: "", id: uuidv4() },
+            { measuredPart: "Total Length", size: "", id: uuidv4() },
+        ],
+    },
 ];
 
 const clothingStore = (set: any, get: any): ClothingStore => ({
