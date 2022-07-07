@@ -39,7 +39,9 @@ const ClothingListItem: React.FC<ClothingListItemProps> = ({
             onClick={onClickListItem}
             className="list-item-with-icon-at-right-side h-12"
         >
-            <p className="text-slate-300">{clothing.type}</p>
+            <span className="font-semibold font-sans text-slate-300">
+                {clothing.type}
+            </span>
 
             <div ref={clothingOptionsRef}>
                 <button

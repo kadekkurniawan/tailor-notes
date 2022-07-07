@@ -6,7 +6,7 @@ import {
     NavigateFunction,
     Link,
 } from "react-router-dom";
-import { useMeasure } from "react-use";
+import { useMeasure, usePageLeave } from "react-use";
 
 import { Sizing, Clothing } from "../../store/clothing";
 import { useNoteStore, NoteStore, Note } from "../../store/note";
@@ -52,6 +52,8 @@ const NotePage: React.FC = () => {
     };
 
     const [navbarRef, { height }] = useMeasure();
+
+    usePageLeave(() => window.alert("you leave the page"));
 
     if (currentNote === undefined)
         return (

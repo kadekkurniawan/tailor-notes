@@ -42,7 +42,7 @@
     }
 
     .text-list-item {
-        @apply text-sm font-sans transition font-medium text-slate-400 extra-small-padding hover:text-slate-300;
+        @apply semibold-text transition font-medium  extra-small-padding hover:text-slate-300;
     }
 
     .list-item-with-icon-at-right-side {
@@ -76,6 +76,6 @@
     }
 
     h2 {
-        @apply font-semibold text-slate-300 font-sans;
+        @apply font-semibold text-xl text-slate-300 font-sans;
     }
 }
