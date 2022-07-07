@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useClickAway } from "react-use";
 
 import Icon from "../../components/Icon";
+import logo from "../../images/logo.png";
 
 interface SidebarProps {
     setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
                 <header>
                     <img
                         className="w-full aspect-square"
-                        src="https://www.dropbox.com/s/ek3fxy1q49qkpnh/custom-tailor-notes.png?raw=1"
+                        src={logo}
                         alt="logo"
                     />
                 </header>
