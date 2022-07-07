@@ -85,7 +85,7 @@ const noteStore = (set: any, get: any): NoteStore => ({
             },
         }));
     },
-    deleteNoteTrashById: (noteId: string) => {
+    deleteNoteFromTrashById: (noteId: string) => {
         set((state: NoteStore) => ({
             notes: {
                 ...state.notes,
@@ -93,7 +93,7 @@ const noteStore = (set: any, get: any): NoteStore => ({
             },
         }));
     },
-    deleteAllNotesTrash: () => {
+    deleteAllNotesFromTrash: () => {
         set((state: NoteStore) => ({
             notes: {
                 ...state.notes,

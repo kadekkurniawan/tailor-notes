@@ -18,7 +18,7 @@ const ClothingsTrashList: React.FC = () => {
         clothings,
         restoreClothingById,
         undoRestoreClothing,
-        deleteClothingTrashById,
+        deleteClothingFromTrashById,
     } = useClothingStore((state: ClothingStore) => state);
 
     const handleRestoreClothing = (
@@ -61,7 +61,9 @@ const ClothingsTrashList: React.FC = () => {
                                     className="text-list-item text-red hover:text-dark-red"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        deleteClothingTrashById(clothing.id!);
+                                        deleteClothingFromTrashById(
+                                            clothing.id!
+                                        );
                                     }}
                                 >
                                     Delete forever

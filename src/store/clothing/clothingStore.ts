@@ -142,7 +142,7 @@ const clothingStore = (set: any, get: any): ClothingStore => ({
             },
         }));
     },
-    deleteClothingTrashById: (clothingId: string) => {
+    deleteClothingFromTrashById: (clothingId: string) => {
         set((state: ClothingStore) => ({
             clothings: {
                 ...state.clothings,
@@ -153,7 +153,7 @@ const clothingStore = (set: any, get: any): ClothingStore => ({
             },
         }));
     },
-    deleteAllClothingsTrash: () => {
+    deleteAllClothingsFromTrash: () => {
         set((state: ClothingStore) => ({
             clothings: {
                 ...state.clothings,

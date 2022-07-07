@@ -21,8 +21,8 @@ export type NoteStore = {
     undoRemoveNote: () => void;
     restoreNoteById: (noteId: string) => void;
     undoRestoreNote: () => void;
-    deleteNoteTrashById: (noteId: string) => void;
-    deleteAllNotesTrash: () => void;
+    deleteNoteFromTrashById: (noteId: string) => void;
+    deleteAllNotesFromTrash: () => void;
 };
 
 export { useNoteStore };

@@ -14,7 +14,7 @@ interface NotesTrashListProps {
 }
 
 const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
-    const { notes, restoreNoteById, undoRestoreNote, deleteNoteTrashById } =
+    const { notes, restoreNoteById, undoRestoreNote, deleteNoteFromTrashById } =
         useNoteStore((state: NoteStore) => state);
 
     const [isUndobarOpen, setIsUndobarOpen] = useState<boolean>(false);
@@ -64,7 +64,7 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
                                     className="text-list-item text-red hover:text-dark-red"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        deleteNoteTrashById(note.id);
+                                        deleteNoteFromTrashById(note.id);
                                     }}
                                 >
                                     Delete Forever

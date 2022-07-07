@@ -50,12 +50,8 @@ const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
                 ref={sidebarRef}
                 className="bg-slate-900 relative overflow-y-auto h-full w-72 shadow-xl"
             >
-                <header>
-                    <img
-                        className="w-full aspect-square"
-                        src={logo}
-                        alt="logo"
-                    />
+                <header className="aspect-square center-children">
+                    <img className="w-1/3" src={logo} alt="logo" />
                 </header>
 
                 <div>

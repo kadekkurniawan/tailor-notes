@@ -30,8 +30,8 @@ export type ClothingStore = {
     undoRemoveClothing: () => void;
     restoreClothingById: (clothingId: string) => void;
     undoRestoreClothing: () => void;
-    deleteClothingTrashById: (clothingId: string) => void;
-    deleteAllClothingsTrash: () => void;
+    deleteClothingFromTrashById: (clothingId: string) => void;
+    deleteAllClothingsFromTrash: () => void;
 };
 
 export type SewingInfoStore = {
