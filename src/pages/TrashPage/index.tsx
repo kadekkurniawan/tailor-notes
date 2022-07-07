@@ -44,7 +44,7 @@ const TrashsPage: React.FC = () => {
                                     : "border-slate-700"
                             }`}
                         >
-                            {notes.trash.length > 0 ? "Notes" : "Note"}
+                            {notes.trash.length > 1 ? "Notes" : "Note"}
                         </Link>
 
                         <Link
@@ -55,7 +55,7 @@ const TrashsPage: React.FC = () => {
                             }`}
                             to="/trash/clothings"
                         >
-                            {clothings.trash.length > 0
+                            {clothings.trash.length > 1
                                 ? "Clothings"
                                 : "Clothing"}
                         </Link>
