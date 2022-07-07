@@ -7,16 +7,6 @@ import { Clothing, ClothingStore } from "./index";
 
 const initialClothings: Clothing[] = [
     {
-        type: "T-shirt",
-        id: uuidv4(),
-        sizings: [
-            { measuredPart: "belly", size: "", id: uuidv4() },
-            { measuredPart: "neck", size: "", id: uuidv4() },
-            { measuredPart: "arm", size: "", id: uuidv4() },
-            { measuredPart: "chest", size: "", id: uuidv4() },
-        ],
-    },
-    {
         type: "Dress shirt",
         id: uuidv4(),
         sizings: [
@@ -54,6 +44,16 @@ const initialClothings: Clothing[] = [
             { measuredPart: "Back Rise", size: "", id: uuidv4() },
             { measuredPart: "Inseam Length", size: "", id: uuidv4() },
             { measuredPart: "Total Length", size: "", id: uuidv4() },
+        ],
+    },
+    {
+        type: "T-shirt",
+        id: uuidv4(),
+        sizings: [
+            { measuredPart: "belly", size: "", id: uuidv4() },
+            { measuredPart: "neck", size: "", id: uuidv4() },
+            { measuredPart: "arm", size: "", id: uuidv4() },
+            { measuredPart: "chest", size: "", id: uuidv4() },
         ],
     },
 ];
