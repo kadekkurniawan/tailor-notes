@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate, NavigateFunction } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
+import { useBeforeUnload } from "react-use";
 
 import {
     Clothing,
@@ -92,6 +93,14 @@ const ClothingPage: React.FC = () => {
         };
         setModifiedClothing(updatedModifiedClothing);
     };
+
+    const isClothingBeingModified =
+        clothing === modifiedClothing ? true : false;
+
+    useBeforeUnload(
+        isClothingBeingModified,
+        "You have unsaved changes, do you want to leave?"
+    );
 
     return (
         <>

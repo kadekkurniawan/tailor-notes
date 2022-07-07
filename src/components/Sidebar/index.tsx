@@ -89,7 +89,10 @@ const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
                         <a className="text-fuchsia social-media-icon" href="">
                             <i className="fa-brands fa-instagram"></i>
                         </a>
-                        <a className="text-slate-100 social-media-icon" href="">
+                        <a
+                            className="text-slate-100 social-media-icon"
+                            href="https://github.com/Esa-Kurniawan"
+                        >
                             <i className="fa-brands fa-github"></i>
                         </a>
                         <a className="text-blue-400 social-media-icon" href="">

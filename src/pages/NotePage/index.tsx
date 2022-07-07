@@ -53,8 +53,6 @@ const NotePage: React.FC = () => {
 
     const [navbarRef, { height }] = useMeasure();
 
-    usePageLeave(() => window.alert("you leave the page"));
-
     if (currentNote === undefined)
         return (
             <Error
