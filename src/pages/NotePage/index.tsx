@@ -6,7 +6,7 @@ import {
     NavigateFunction,
     Link,
 } from "react-router-dom";
-import { useMeasure, usePageLeave } from "react-use";
+import { useMeasure } from "react-use";
 
 import { Sizing, Clothing } from "../../store/clothing";
 import { useNoteStore, NoteStore, Note } from "../../store/note";

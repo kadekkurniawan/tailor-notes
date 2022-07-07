@@ -30,9 +30,9 @@ const SettingsPage: React.FC = () => {
                 onClickMainButton={() => navigate("/")}
             />
 
-            <main>
+            <main className="mt-24">
                 <div className="container">
-                    <ul>
+                    <ul className="grid gap-4">
                         <ListItem
                             title="Default measurement type"
                             description="when you created a new note set this as the measurement type"
@@ -50,7 +50,7 @@ const SettingsPage: React.FC = () => {
                         />
                         <ListItem
                             title="Default sewing info"
-                            description=" when you createf a new note set this as the sewing info"
+                            description="when you created a new note set this as the sewing info"
                             rightSide={
                                 <Select
                                     value={sewingInfo}

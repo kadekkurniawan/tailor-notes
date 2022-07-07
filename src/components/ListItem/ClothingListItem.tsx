@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
 import { useClickAway } from "react-use";
 
 import Icon from "../../components/Icon";
@@ -18,8 +17,6 @@ const ClothingListItem: React.FC<ClothingListItemProps> = ({
     clothing,
     clothingOptions,
 }) => {
-    const navigate = useNavigate();
-
     const handleToggleClothingOptionsVisibility = (
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import { Link, useLocation } from "react-router-dom";
 import { useClickAway } from "react-use";

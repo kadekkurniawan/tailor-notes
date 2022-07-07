@@ -27,6 +27,7 @@ const ClothingNavbar: React.FC<ClothingNavbarProps> = ({
 
                     <InputWithBottomBorder
                         value={clothingType}
+                        placeholder="Clothing type..."
                         onChange={onChangeClothingType}
                     />
                 </div>

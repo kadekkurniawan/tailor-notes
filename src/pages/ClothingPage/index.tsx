@@ -11,7 +11,7 @@ import {
     ClothingStore,
     Sizing,
 } from "../../store/clothing";
-import { findListItem, removeListItem, replaceListItem } from "../../helpers";
+import { findListItem, removeListItem } from "../../helpers";
 import Icon from "../../components/Icon";
 import ClothingNavbar from "./ClothingNavbar";
 import SizingForm from "./SizingForm";

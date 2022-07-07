@@ -4,12 +4,10 @@ const colors = require("tailwindcss/colors");
 module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ["Open Sans", "sans-serif"],
-                serif: ["Slabo 27px", "serif"],
-                mono: ["Space Mono", "monospace"],
-            },
+        fontFamily: {
+            sans: ["Open Sans", "sans-serif"],
+            serif: ["Slabo 27px", "serif"],
+            mono: ["Space Mono", "monospace"],
         },
         container: {
             center: true,

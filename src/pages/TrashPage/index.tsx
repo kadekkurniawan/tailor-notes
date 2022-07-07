@@ -36,29 +36,32 @@ const TrashsPage: React.FC = () => {
             <main className="mt-24">
                 <div className="container">
                     <nav className="sticky top-16 flex divide-x divide-slate-700">
-                        <Link
-                            to="/trash/notes"
-                            className={`grow py-3 border-solid border-b semibold-text center-children ${
-                                location.pathname === "/trash/notes"
-                                    ? " border-teal"
-                                    : "border-slate-700"
-                            }`}
-                        >
-                            {notes.trash.length > 1 ? "Notes" : "Note"}
-                        </Link>
-
-                        <Link
-                            className={`grow py-3 semibold-text center-children ${
-                                location.pathname === "/trash/clothings"
-                                    ? "border border-slate-100"
-                                    : ""
-                            }`}
-                            to="/trash/clothings"
-                        >
-                            {clothings.trash.length > 1
-                                ? "Clothings"
-                                : "Clothing"}
-                        </Link>
+                        <div className={`grow `}>
+                            <Link
+                                className={`py-3 semibold-text center-children border-solid border-b ${
+                                    location.pathname === "/trash/notes"
+                                        ? "border-teal"
+                                        : "border-slate-700"
+                                }`}
+                                to="/trash/notes"
+                            >
+                                {notes.trash.length > 1 ? "Notes" : "Note"}
+                            </Link>
+                        </div>
+                        <div className={`grow `}>
+                            <Link
+                                className={`py-3 semibold-text center-children border-solid border-b ${
+                                    location.pathname === "/trash/clothings"
+                                        ? "border-teal"
+                                        : "border-slate-700"
+                                }`}
+                                to="/trash/clothings"
+                            >
+                                {clothings.trash.length > 1
+                                    ? "Clothings"
+                                    : "Clothing"}
+                            </Link>
+                        </div>
                     </nav>
 
                     <Outlet context={querySearch} />

@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 
 import { NavigateFunction, useNavigate, Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { toast } from "react-toastify";
 import { useDebounce } from "react-use";
 
 import {
@@ -24,7 +23,7 @@ import Undobar from "../../components/Undobar";
 const SelectClothingPage: React.FC = () => {
     const navigate: NavigateFunction = useNavigate();
 
-    const { clothings, addClothing, removeClothingById, undoRemoveClothing } =
+    const { clothings, removeClothingById, undoRemoveClothing } =
         useClothingStore((state: ClothingStore) => state);
     const measurementType = useMeasurementTypeStore(
         (state: MeasurementTypeStore) => state.measurementType

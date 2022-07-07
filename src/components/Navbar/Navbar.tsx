@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({
     return (
         <nav className="navbar-container">
             <div className="flex justify-between items-center">
-                <div className="">
+                <div className="flex gap-3 items-center">
                     <button className="button-icon" onClick={onClickMainButton}>
                         <Icon type={mainButton} />
                     </button>

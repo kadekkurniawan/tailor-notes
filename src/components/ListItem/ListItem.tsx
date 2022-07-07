@@ -16,11 +16,11 @@ const ListItem: React.FC<ListItemProps> = ({
     return (
         <li
             onClick={onClickListItem}
-            className="flex cursor-default px-3 py-2 items-center justify-between"
+            className="flex justify-between small-padding items-center slate-700-border bg-slate-800 rounded-lg"
         >
             <div>
-                <p className="overflow-x whitespace-nowrap max-w-sm">{title}</p>
-                <p className="text-slate-500 font-sm">{description || ""}</p>
+                <h2 className="text-base">{title}</h2>
+                <p className="text-sm">{description || ""}</p>
             </div>
             {rightSide}
         </li>
