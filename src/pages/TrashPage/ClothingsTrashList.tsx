@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 
 import { toast } from "react-toastify";
-import { searchListItems } from "../../helpers";
+import { useDebounce } from "react-use";
 
 import {
     ClothingStore,
@@ -9,16 +9,11 @@ import {
     Clothing,
 } from "../../store/clothing";
 import Undobar from "../../components/Undobar";
+import { searchListItems } from "../../helpers";
 import { ClothingListItem } from "../../components/ListItem";
-import { useDebounce } from "react-use";
+import { useQuerySearch } from ".";
 
-interface ClothingsTrashListProps {
-    querySearch?: string;
-}
-
-const ClothingsTrashList: React.FC<ClothingsTrashListProps> = ({
-    querySearch,
-}) => {
+const ClothingsTrashList: React.FC = () => {
     const {
         clothings,
         restoreClothingById,
@@ -26,14 +21,21 @@ const ClothingsTrashList: React.FC<ClothingsTrashListProps> = ({
         deleteClothingTrashById,
     } = useClothingStore((state: ClothingStore) => state);
 
+    const handleRestoreClothing = (
+        e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+        clothingId: string
+    ) => {
+        e.stopPropagation();
+
+        restoreClothingById(clothingId);
+        setIsUndobarOpen(true);
+    };
+
+    const querySearch = useQuerySearch();
+
     const filteredClothingsTrash: Clothing[] = useMemo(
-        () =>
-            searchListItems(
-                clothings.trash,
-                "type",
-                querySearch!
-            ) as Clothing[],
-        [querySearch]
+        () => searchListItems(clothings.trash, "type", querySearch),
+        [clothings, querySearch]
     );
 
     const [isUndobarOpen, setIsUndobarOpen] = useState<boolean>(false);
@@ -42,23 +44,25 @@ const ClothingsTrashList: React.FC<ClothingsTrashListProps> = ({
 
     return (
         <>
-            <ul className="grid-column-list">
+            <ul className="grid-column-list mt-6">
                 {filteredClothingsTrash.map((clothing: Clothing) => (
                     <ClothingListItem
                         clothingOptions={
                             <>
                                 <li
-                                    onClick={() => {
-                                        restoreClothingById(clothing.id!);
-                                        setIsUndobarOpen(true);
-                                    }}
+                                    className="text-list-item"
+                                    onClick={(e) =>
+                                        handleRestoreClothing(e, clothing.id!)
+                                    }
                                 >
                                     Restore
                                 </li>
                                 <li
-                                    onClick={() =>
-                                        deleteClothingTrashById(clothing.id!)
-                                    }
+                                    className="text-list-item text-red hover:text-dark-red"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        deleteClothingTrashById(clothing.id!);
+                                    }}
                                 >
                                     Delete forever
                                 </li>
@@ -66,7 +70,7 @@ const ClothingsTrashList: React.FC<ClothingsTrashListProps> = ({
                         }
                         onClickListItem={() =>
                             toast.info(
-                                "You can't view note on trash, restore the note if you want to view it"
+                                "Can't view clothing in trash mode, restore the clothing if you want to view it"
                             )
                         }
                         clothing={clothing}

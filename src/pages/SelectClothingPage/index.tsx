@@ -77,17 +77,12 @@ const SelectClothingPage: React.FC = () => {
         setTimeout(() => setIsUndobarOpen(true), 500);
     };
 
-    const filteredClothings: Clothing[] = searchListItems(
-        clothings.data,
-        "type",
-        querySearch
+    const filteredClothings: Clothing[] = useMemo(
+        () => searchListItems(clothings.data, "type", querySearch),
+        [clothings, querySearch]
     );
 
-    const [, cancelDebounce] = useDebounce(
-        () => setIsUndobarOpen(false),
-        5000,
-        [isUndobarOpen]
-    );
+    useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
     return (
         <>

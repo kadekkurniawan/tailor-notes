@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 
 import { useNavigate, Link } from "react-router-dom";
-import { useDebounce, useBeforeUnload } from "react-use";
+import { useDebounce } from "react-use";
 
 import { searchListItems } from "../../helpers";
 import { NoteListItem } from "../../components/ListItem";
@@ -33,15 +33,12 @@ const HomePage: React.FC = () => {
         setIsUndobarOpen(true);
     };
 
-    const filteredNotes: Note[] = searchListItems(
-        notes.data,
-        "customerName",
-        querySearch
+    const filteredNotes: Note[] = useMemo(
+        () => searchListItems(notes.data, "customerName", querySearch),
+        [querySearch, notes]
     );
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
-
-    useBeforeUnload();
 
     return (
         <>

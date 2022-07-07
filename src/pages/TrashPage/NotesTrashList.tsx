@@ -6,6 +6,7 @@ import { useDebounce } from "react-use";
 import { NoteListItem } from "../../components/ListItem";
 import Undobar from "../../components/Undobar";
 import { searchListItems } from "../../helpers";
+import { useQuerySearch } from ".";
 import { useNoteStore, NoteStore, Note } from "../../store/note";
 
 interface NotesTrashListProps {
@@ -18,36 +19,53 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
 
     const [isUndobarOpen, setIsUndobarOpen] = useState<boolean>(false);
 
-    useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
+    const handleRestoreNote = (
+        e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+        noteId: string
+    ) => {
+        e.stopPropagation();
 
-    const filteredNotesTrash: Note[] = useMemo(
-        () =>
-            searchListItems(
-                notes.trash,
-                "customerName",
-                querySearch!
-            ) as Note[],
-        [querySearch]
+        restoreNoteById(noteId);
+        setIsUndobarOpen(true);
+    };
+
+    const quarySearch = useQuerySearch();
+
+    const filteredNotesTrash = useMemo(
+        () => searchListItems(notes.trash, "customerName", quarySearch),
+        [notes, quarySearch]
     );
+
+    useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
     return (
         <>
-            <ul>
+            <ul className="grid-column-list mt-6">
                 {filteredNotesTrash.map((note: Note) => (
                     <NoteListItem
+                        key={note.id}
                         note={note}
                         onClickListItem={() =>
                             toast.info(
-                                "You can't view note on trash, restore the note if you want to view it"
+                                "Can't view note in trash, restore the note if you want to view it"
                             )
                         }
                         noteOptions={
                             <>
-                                <li onClick={() => restoreNoteById(note.id)}>
+                                <li
+                                    className="text-list-item"
+                                    onClick={(e) =>
+                                        handleRestoreNote(e, note.id)
+                                    }
+                                >
                                     Restore
                                 </li>
                                 <li
-                                    onClick={() => deleteNoteTrashById(note.id)}
+                                    className="text-list-item text-red hover:text-dark-red"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        deleteNoteTrashById(note.id);
+                                    }}
                                 >
                                     Delete Forever
                                 </li>

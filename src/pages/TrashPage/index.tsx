@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useOutletContext } from "react-router-dom";
 
 import Sidebar from "../../components/Sidebar";
 import { NavbarWithInputSearch } from "../../components/Navbar";
@@ -33,7 +33,7 @@ const TrashsPage: React.FC = () => {
 
             {isSidebarOpen && <Sidebar setIsSidebarOpen={setIsSidebarOpen} />}
 
-            <main className="mt-72">
+            <main className="mt-24">
                 <div className="container">
                     <nav className="sticky top-16 flex divide-x divide-slate-700">
                         <Link
@@ -61,13 +61,17 @@ const TrashsPage: React.FC = () => {
                         </Link>
                     </nav>
 
-                    <Outlet />
+                    <Outlet context={querySearch} />
                 </div>
             </main>
         </>
     );
 };
 
+const useQuerySearch = () => {
+    return useOutletContext<string>();
+};
+
 export default TrashsPage;
 
-export { ClothingsTrashList, NotesTrashList };
+export { useQuerySearch, ClothingsTrashList, NotesTrashList };

@@ -37,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
             id: 3,
             label: "Trash",
             icon: "delete",
-            path: "/trash",
+            path: "/trash/notes",
         },
     ];
 
