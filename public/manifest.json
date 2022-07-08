@@ -6,7 +6,7 @@
             "src": "maskable192.png",
             "type": "image/png",
             "sizes": "192x192",
-            "purpose": "maskable"
+            "purpose": "any maskable"
         },
         {
             "src": "favicon.ico",
