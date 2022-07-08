@@ -1,5 +1,5 @@
 {
-    "short_name": "Tailor Notes",
+    "short_name": "Tailor's Notes",
     "name": "Tailor's Notes",
     "icons": [
         {
@@ -20,6 +20,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#94a3b8",
+    "theme_color": "#000000",
     "background_color": "#0f172a"
 }
