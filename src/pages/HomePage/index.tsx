@@ -59,7 +59,10 @@ const HomePage: React.FC = () => {
                 }
             />
 
-            {isSidebarOpen && <Sidebar setIsSidebarOpen={setIsSidebarOpen} />}
+            <Sidebar
+                isSidebarOpen={isSidebarOpen}
+                setIsSidebarOpen={setIsSidebarOpen}
+            />
 
             <main className="mt-20 lg:mt-24 mb-4 ">
                 <div className="container">

@@ -1,21 +1,30 @@
 import React, { useRef } from "react";
 
-import { Link, useLocation } from "react-router-dom";
 import { useClickAway } from "react-use";
+import { motion } from "framer-motion";
 
-import Icon from "../../components/Icon";
 import logo from "../../images/logo.png";
+import MenuListItem from "./MenuListItem";
 
 interface SidebarProps {
     setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    isSidebarOpen: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
-    const location = useLocation();
+export interface SidebarMenu {
+    id: number;
+    label: string;
+    icon: string;
+    path: string;
+}
 
+const Sidebar: React.FC<SidebarProps> = ({
+    isSidebarOpen,
+    setIsSidebarOpen,
+}) => {
     const sidebarRef = useRef(null);
 
-    const sidebarMenus = [
+    const sidebarMenus: SidebarMenu[] = [
         {
             id: 0,
             label: "Notes",
@@ -42,10 +51,29 @@ const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
         },
     ];
 
+    const sidebarVariants = {
+        open: { opacity: 1, x: 0 },
+        closed: { opacity: 0, x: "-100vw" },
+    };
+
+    const sidebarMenusVariants = {
+        open: {
+            transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+        },
+        closed: {
+            transition: { staggerChildren: 0.05, staggerDirection: -1 },
+        },
+    };
+
     useClickAway(sidebarRef, () => setIsSidebarOpen(false));
 
     return (
-        <div className="z-50 fixed top-0 left-0 h-screen backdrop-blur w-screen">
+        <motion.div
+            initial={{ x: "-100%", y: 0 }}
+            animate={isSidebarOpen ? "open" : "closed"}
+            variants={sidebarVariants}
+            className="z-50 fixed top-0 left-0 h-screen backdrop-blur w-screen"
+        >
             <aside
                 ref={sidebarRef}
                 className="bg-slate-900 relative overflow-y-auto h-full w-72 shadow-xl"
@@ -55,30 +83,11 @@ const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
                 </header>
 
                 <div>
-                    <ul>
+                    <motion.ul variants={sidebarMenusVariants}>
                         {sidebarMenus.map((menu) => (
-                            <li key={menu.id}>
-                                <Link
-                                    to={menu.path}
-                                    className={`${
-                                        menu.path === location.pathname &&
-                                        "bg-slate-800"
-                                    } group transition small-padding flex items-center gap-4 hover:border-b hover:border-t hover:border-solid hover:border-slate-800`}
-                                >
-                                    <Icon
-                                        type={menu.icon}
-                                        className={`${
-                                            menu.path === location.pathname &&
-                                            "text-teal"
-                                        } text-lg transition group-hover:text-xl group-hover:text-teal`}
-                                    />
-                                    <span className="semibold-text">
-                                        {menu.label}
-                                    </span>
-                                </Link>
-                            </li>
+                            <MenuListItem menu={menu} />
                         ))}
-                    </ul>
+                    </motion.ul>
                 </div>
 
                 <footer className="absolute bottom-0 left-0 w-full border-solid small-padding border-t border-slate-800">
@@ -101,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({ setIsSidebarOpen }) => {
                     </div>
                 </footer>
             </aside>
-        </div>
+        </motion.div>
     );
 };
 

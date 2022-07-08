@@ -31,7 +31,10 @@ const TrashsPage: React.FC = () => {
                 onClickMainButton={() => setIsSidebarOpen(true)}
             />
 
-            {isSidebarOpen && <Sidebar setIsSidebarOpen={setIsSidebarOpen} />}
+            <Sidebar
+                isSidebarOpen={isSidebarOpen}
+                setIsSidebarOpen={setIsSidebarOpen}
+            />
 
             <main className="mt-24">
                 <div className="container">
