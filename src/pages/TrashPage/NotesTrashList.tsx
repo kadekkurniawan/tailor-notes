@@ -78,12 +78,11 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
                 </AnimatePresence>
             </ul>
 
-            {isUndobarOpen && (
-                <Undobar
-                    message={<p>Note restored</p>}
-                    onClickUndo={() => undoRestoreNote()}
-                />
-            )}
+            <Undobar
+                isUndobarOpen={isUndobarOpen}
+                message={<p>Note restored</p>}
+                onClickUndo={() => undoRestoreNote()}
+            />
         </>
     );
 };
