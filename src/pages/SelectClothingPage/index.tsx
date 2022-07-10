@@ -148,27 +148,26 @@ const SelectClothingPage: React.FC = () => {
                                 to="/clothing/creating-a-new-clothing"
                             >
                                 <Icon type="add" className="text-teal" />
-                                <p>Clothing</p>
+                                <span className="semibold-text">Clothing</span>
                             </Link>
                         </li>
                     </ul>
                 </div>
             </main>
 
-            {isUndobarOpen && (
-                <Undobar
-                    message={
-                        <p>
-                            Clothing Moved to{" "}
-                            <Link to="/trash/clothings">trash</Link>
-                        </p>
-                    }
-                    onClickUndo={() => {
-                        undoRemoveClothing();
-                        setIsUndobarOpen(false);
-                    }}
-                />
-            )}
+            <Undobar
+                isUndobarOpen={isUndobarOpen}
+                message={
+                    <p>
+                        Clothing Moved to{" "}
+                        <Link to="/trash/clothings">trash</Link>
+                    </p>
+                }
+                onClickUndo={() => {
+                    undoRemoveClothing();
+                    setIsUndobarOpen(false);
+                }}
+            />
         </>
     );
 };

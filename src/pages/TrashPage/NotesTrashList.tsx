@@ -37,6 +37,14 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
         [notes, quarySearch]
     );
 
+    const handleDeleteNote = (
+        e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+        noteId: string
+    ) => {
+        e.stopPropagation();
+        deleteNoteFromTrashById(noteId);
+    };
+
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
     return (
@@ -64,10 +72,9 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
                                     </li>
                                     <li
                                         className="text-list-item text-red hover:text-dark-red"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            deleteNoteFromTrashById(note.id);
-                                        }}
+                                        onClick={(e) =>
+                                            handleDeleteNote(e, note.id)
+                                        }
                                     >
                                         Delete Forever
                                     </li>

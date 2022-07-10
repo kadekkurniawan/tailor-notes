@@ -86,12 +86,11 @@ const ClothingsTrashList: React.FC = () => {
                 </AnimatePresence>
             </ul>
 
-            {isUndobarOpen && (
-                <Undobar
-                    message={<p>Clothing restored</p>}
-                    onClickUndo={undoRestoreClothing}
-                />
-            )}
+            <Undobar
+                isUndobarOpen={isUndobarOpen}
+                message={<p>Clothing restored</p>}
+                onClickUndo={undoRestoreClothing}
+            />
         </>
     );
 };
