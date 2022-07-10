@@ -69,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
     return (
         <motion.div
-            initial={{ x: "-100%", y: 0 }}
+            initial={{ x: "-100vw", opacity: 0 }}
             animate={isSidebarOpen ? "open" : "closed"}
             variants={sidebarVariants}
             className="z-50 fixed top-0 left-0 h-screen backdrop-blur w-screen"

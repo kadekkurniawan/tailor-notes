@@ -1,7 +1,10 @@
 import React, { useState, useRef } from "react";
+
 import { useClickAway } from "react-use";
+import { motion } from "framer-motion";
 
 import { Note } from "../../store/note";
+import { listItemAnimations } from "../../animations";
 import Icon from "../Icon";
 import { AbsolutelyPositionOptionList } from "../Option";
 
@@ -39,7 +42,8 @@ const NoteListItem: React.FC<NoteListItemProps> = ({
     useClickAway(noteOptionsRef, () => setIsNoteOptionsOpen(false));
 
     return (
-        <li
+        <motion.li
+            {...listItemAnimations}
             className="list-item-with-icon-at-right-side group-hover:bg-slate-400"
             onClick={onClickListItem}
         >
@@ -70,7 +74,7 @@ const NoteListItem: React.FC<NoteListItemProps> = ({
                     </AbsolutelyPositionOptionList>
                 )}
             </div>
-        </li>
+        </motion.li>
     );
 };
 

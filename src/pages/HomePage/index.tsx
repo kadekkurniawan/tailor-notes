@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 
 import { useNavigate, Link } from "react-router-dom";
 import { useDebounce } from "react-use";
+import { AnimatePresence } from "framer-motion";
 
 import { searchListItems } from "../../helpers";
 import { NoteListItem } from "../../components/ListItem";
@@ -67,44 +68,45 @@ const HomePage: React.FC = () => {
             <main className="mt-20 lg:mt-24 mb-4 ">
                 <div className="container">
                     <ul className="grid-column-list">
-                        {filteredNotes.map((note: Note) => (
-                            <NoteListItem
-                                key={note.id}
-                                note={note}
-                                onClickListItem={() =>
-                                    navigate(`/note/${note.id}`)
-                                }
-                                noteOptions={
-                                    <>
-                                        <li
-                                            className="text-list-item text-red hover:text-dark-red"
-                                            onClick={(e) =>
-                                                handleRemoveNote(e, note.id)
-                                            }
-                                        >
-                                            Remove
-                                        </li>
-                                    </>
-                                }
-                            />
-                        ))}
+                        <AnimatePresence>
+                            {filteredNotes.map((note: Note) => (
+                                <NoteListItem
+                                    key={note.id}
+                                    note={note}
+                                    onClickListItem={() =>
+                                        navigate(`/note/${note.id}`)
+                                    }
+                                    noteOptions={
+                                        <>
+                                            <li
+                                                className="text-list-item text-red hover:text-dark-red"
+                                                onClick={(e) =>
+                                                    handleRemoveNote(e, note.id)
+                                                }
+                                            >
+                                                Remove
+                                            </li>
+                                        </>
+                                    }
+                                />
+                            ))}
+                        </AnimatePresence>
                     </ul>
                 </div>
             </main>
 
-            {isUndobarOpen && (
-                <Undobar
-                    message={
-                        <p>
-                            Note moved to <Link to="/trash/notes">trash</Link>
-                        </p>
-                    }
-                    onClickUndo={() => {
-                        undoRemoveNote();
-                        setIsUndobarOpen(false);
-                    }}
-                />
-            )}
+            <Undobar
+                isUndobarOpen={isUndobarOpen}
+                message={
+                    <p>
+                        Note moved to <Link to="/trash/notes">trash</Link>
+                    </p>
+                }
+                onClickUndo={() => {
+                    undoRemoveNote();
+                    setIsUndobarOpen(false);
+                }}
+            />
 
             <div
                 className={`fixed lg:hidden bottom-6 right-6 ${

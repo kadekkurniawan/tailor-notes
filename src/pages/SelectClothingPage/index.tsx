@@ -3,6 +3,7 @@ import React, { useState, useMemo } from "react";
 import { NavigateFunction, useNavigate, Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useDebounce } from "react-use";
+import { AnimatePresence } from "framer-motion";
 
 import {
     useClothingStore,
@@ -103,39 +104,43 @@ const SelectClothingPage: React.FC = () => {
                     </div>
 
                     <ul className="mt-6 grid-column-list">
-                        {filteredClothings?.map((clothing: Clothing) => (
-                            <ClothingListItem
-                                key={clothing.id}
-                                clothing={clothing}
-                                onClickListItem={() => handleAddNote(clothing)}
-                                clothingOptions={
-                                    <>
-                                        <li
-                                            className="text-list-item"
-                                            onClick={(e) =>
-                                                handleViewClothing(
-                                                    e,
-                                                    clothing.id!
-                                                )
-                                            }
-                                        >
-                                            Edit
-                                        </li>
-                                        <li
-                                            className="text-list-item text-red hover:text-dark-red"
-                                            onClick={(e) =>
-                                                handleRemoveClothing(
-                                                    e,
-                                                    clothing.id!
-                                                )
-                                            }
-                                        >
-                                            Remove
-                                        </li>
-                                    </>
-                                }
-                            />
-                        ))}
+                        <AnimatePresence>
+                            {filteredClothings?.map((clothing: Clothing) => (
+                                <ClothingListItem
+                                    key={clothing.id}
+                                    clothing={clothing}
+                                    onClickListItem={() =>
+                                        handleAddNote(clothing)
+                                    }
+                                    clothingOptions={
+                                        <>
+                                            <li
+                                                className="text-list-item"
+                                                onClick={(e) =>
+                                                    handleViewClothing(
+                                                        e,
+                                                        clothing.id!
+                                                    )
+                                                }
+                                            >
+                                                Edit
+                                            </li>
+                                            <li
+                                                className="text-list-item text-red hover:text-dark-red"
+                                                onClick={(e) =>
+                                                    handleRemoveClothing(
+                                                        e,
+                                                        clothing.id!
+                                                    )
+                                                }
+                                            >
+                                                Remove
+                                            </li>
+                                        </>
+                                    }
+                                />
+                            ))}
+                        </AnimatePresence>
 
                         <li className="small-padding hover:bg-slate-700 slate-700-border h-12 bg-slate-800 rounded-lg">
                             <Link

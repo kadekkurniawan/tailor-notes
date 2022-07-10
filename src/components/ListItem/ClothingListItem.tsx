@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
 
 import { useClickAway } from "react-use";
+import { motion } from "framer-motion";
 
 import Icon from "../../components/Icon";
 import { AbsolutelyPositionOptionList } from "../../components/Option";
+import { listItemAnimations } from "../../animations";
 import { Clothing } from "../../store/clothing";
 
 interface ClothingListItemProps {
@@ -32,7 +34,8 @@ const ClothingListItem: React.FC<ClothingListItemProps> = ({
     useClickAway(clothingOptionsRef, () => setIsClothingOptionsOpen(false));
 
     return (
-        <li
+        <motion.li
+            {...listItemAnimations}
             onClick={onClickListItem}
             className="list-item-with-icon-at-right-side h-12"
         >
@@ -57,7 +60,7 @@ const ClothingListItem: React.FC<ClothingListItemProps> = ({
                     </AbsolutelyPositionOptionList>
                 )}
             </div>
-        </li>
+        </motion.li>
     );
 };
 
