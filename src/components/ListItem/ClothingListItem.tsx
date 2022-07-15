@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 import Icon from "../../components/Icon";
 import { AbsolutelyPositionOptionList } from "../../components/Option";
-import { listItemAnimations } from "../../lib/animations";
+import { listItemAnimations } from "../../animations";
 import { Clothing } from "../../store/clothing";
-import { Delay } from "../../lib/animations";
+import { Delay } from "../../animations";
 
 interface ClothingListItemProps {
     onClickListItem: () => void;

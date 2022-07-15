@@ -2,7 +2,7 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-import { Delay, listItemAnimations } from "../../lib/animations";
+import { Delay, listItemAnimations } from "../../animations";
 import { Sizing } from "../../store/clothing";
 import Icon from "../../components/Icon";
 

@@ -4,7 +4,7 @@ import { useClickAway } from "react-use";
 import { motion } from "framer-motion";
 
 import { Note } from "../../store/note";
-import { listItemAnimations, Delay } from "../../lib/animations";
+import { listItemAnimations, Delay } from "../../animations";
 import Icon from "../Icon";
 import { AbsolutelyPositionOptionList } from "../Option";
 

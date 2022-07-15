@@ -19,7 +19,7 @@ import { ClothingListItem } from "../../components/ListItem";
 import Icon from "../../components/Icon";
 import { NavbarWithInputSearch } from "../../components/Navbar";
 import { searchListItems } from "../../utils";
-import { Delay, listItemAnimations } from "../../lib/animations";
+import { Delay, listItemAnimations } from "../../animations";
 import Undobar from "../../components/Undobar";
 
 const SelectClothingPage: React.FC = () => {
