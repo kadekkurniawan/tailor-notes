@@ -47,42 +47,45 @@ const ClothingsTrashList: React.FC = () => {
         <>
             <ul className="grid-column-list mt-6">
                 <AnimatePresence>
-                    {filteredClothingsTrash.map((clothing: Clothing) => (
-                        <ClothingListItem
-                            clothingOptions={
-                                <>
-                                    <li
-                                        className="text-list-item"
-                                        onClick={(e) =>
-                                            handleRestoreClothing(
-                                                e,
-                                                clothing.id!
-                                            )
-                                        }
-                                    >
-                                        Restore
-                                    </li>
-                                    <li
-                                        className="text-list-item text-red hover:text-dark-red"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            deleteClothingFromTrashById(
-                                                clothing.id!
-                                            );
-                                        }}
-                                    >
-                                        Delete forever
-                                    </li>
-                                </>
-                            }
-                            onClickListItem={() =>
-                                toast.info(
-                                    "Can't view clothing in trash mode, restore the clothing if you want to view it"
-                                )
-                            }
-                            clothing={clothing}
-                        />
-                    ))}
+                    {filteredClothingsTrash.map(
+                        (clothing: Clothing, clothingIndex: number) => (
+                            <ClothingListItem
+                                clothingIndex={clothingIndex}
+                                clothingOptions={
+                                    <>
+                                        <li
+                                            className="text-list-item"
+                                            onClick={(e) =>
+                                                handleRestoreClothing(
+                                                    e,
+                                                    clothing.id!
+                                                )
+                                            }
+                                        >
+                                            Restore
+                                        </li>
+                                        <li
+                                            className="text-list-item text-red hover:text-dark-red"
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                deleteClothingFromTrashById(
+                                                    clothing.id!
+                                                );
+                                            }}
+                                        >
+                                            Delete forever
+                                        </li>
+                                    </>
+                                }
+                                onClickListItem={() =>
+                                    toast.info(
+                                        "Can't view clothing in trash mode, restore the clothing if you want to view it"
+                                    )
+                                }
+                                clothing={clothing}
+                            />
+                        )
+                    )}
                 </AnimatePresence>
             </ul>
 

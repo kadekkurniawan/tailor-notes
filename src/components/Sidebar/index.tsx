@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 import { useClickAway } from "react-use";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import logo from "../../images/logo.png";
 import MenuListItem from "./MenuListItem";
@@ -56,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         closed: { opacity: 0, x: "-100vw" },
     };
 
-    const sidebarMenusVariants = {
+    const menusContainerVariants = {
         open: {
             transition: { staggerChildren: 0.07, delayChildren: 0.2 },
         },
@@ -68,49 +68,63 @@ const Sidebar: React.FC<SidebarProps> = ({
     useClickAway(sidebarRef, () => setIsSidebarOpen(false));
 
     return (
-        <motion.div
-            initial={{ x: "-100vw", opacity: 0 }}
-            animate={isSidebarOpen ? "open" : "closed"}
-            variants={sidebarVariants}
-            className="z-50 fixed top-0 left-0 h-screen backdrop-blur w-screen"
-        >
-            <aside
-                ref={sidebarRef}
-                className="bg-slate-900 relative overflow-y-auto h-full w-72 shadow-xl"
-            >
-                <header className="aspect-square center-children">
-                    <img className="w-1/3" src={logo} alt="logo" />
-                </header>
+        <AnimatePresence>
+            {isSidebarOpen && (
+                <motion.div
+                    initial="closed"
+                    animate="open"
+                    exit="closed"
+                    variants={sidebarVariants}
+                    className="z-50 fixed top-0 left-0 h-screen backdrop-blur w-screen"
+                >
+                    <aside
+                        ref={sidebarRef}
+                        className="bg-slate-900 relative overflow-y-auto h-full w-72 shadow-xl"
+                    >
+                        <header className="aspect-square center-children">
+                            <img className="w-1/3" src={logo} alt="logo" />
+                        </header>
 
-                <div>
-                    <motion.ul variants={sidebarMenusVariants}>
-                        {sidebarMenus.map((menu) => (
-                            <MenuListItem menu={menu} />
-                        ))}
-                    </motion.ul>
-                </div>
+                        <div>
+                            <motion.ul variants={menusContainerVariants}>
+                                {sidebarMenus.map((menu) => (
+                                    <MenuListItem key={menu.id} menu={menu} />
+                                ))}
+                            </motion.ul>
+                        </div>
 
-                <footer className="absolute bottom-0 left-0 w-full border-solid small-padding border-t border-slate-800">
-                    <div className="flex justify-center flex-wrap ">
-                        <a className="text-fuchsia social-media-icon" href="">
-                            <i className="fa-brands fa-instagram"></i>
-                        </a>
-                        <a
-                            className="text-slate-100 social-media-icon"
-                            href="https://github.com/Esa-Kurniawan"
-                        >
-                            <i className="fa-brands fa-github"></i>
-                        </a>
-                        <a className="text-blue-400 social-media-icon" href="">
-                            <i className="fa-brands fa-linkedin"></i>
-                        </a>
-                        <a className="text-blue-500 social-media-icon" href="">
-                            <i className="fa-brands fa-facebook"></i>
-                        </a>
-                    </div>
-                </footer>
-            </aside>
-        </motion.div>
+                        <footer className="absolute bottom-0 left-0 w-full border-solid small-padding border-t border-slate-800">
+                            <div className="flex justify-center flex-wrap ">
+                                <a
+                                    className="text-fuchsia social-media-icon"
+                                    href=""
+                                >
+                                    <i className="fa-brands fa-instagram"></i>
+                                </a>
+                                <a
+                                    className="text-slate-100 social-media-icon"
+                                    href="https://github.com/Esa-Kurniawan"
+                                >
+                                    <i className="fa-brands fa-github"></i>
+                                </a>
+                                <a
+                                    className="text-blue-400 social-media-icon"
+                                    href=""
+                                >
+                                    <i className="fa-brands fa-linkedin"></i>
+                                </a>
+                                <a
+                                    className="text-blue-500 social-media-icon"
+                                    href=""
+                                >
+                                    <i className="fa-brands fa-facebook"></i>
+                                </a>
+                            </div>
+                        </footer>
+                    </aside>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 

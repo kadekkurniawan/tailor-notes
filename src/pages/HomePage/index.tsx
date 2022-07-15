@@ -69,27 +69,33 @@ const HomePage: React.FC = () => {
                 <div className="container">
                     <ul className="grid-column-list">
                         <AnimatePresence>
-                            {filteredNotes.map((note: Note) => (
-                                <NoteListItem
-                                    key={note.id}
-                                    note={note}
-                                    onClickListItem={() =>
-                                        navigate(`/note/${note.id}`)
-                                    }
-                                    noteOptions={
-                                        <>
-                                            <li
-                                                className="text-list-item text-red hover:text-dark-red"
-                                                onClick={(e) =>
-                                                    handleRemoveNote(e, note.id)
-                                                }
-                                            >
-                                                Remove
-                                            </li>
-                                        </>
-                                    }
-                                />
-                            ))}
+                            {filteredNotes.map(
+                                (note: Note, noteIndex: number) => (
+                                    <NoteListItem
+                                        noteIndex={noteIndex}
+                                        key={note.id}
+                                        note={note}
+                                        onClickListItem={() =>
+                                            navigate(`/note/${note.id}`)
+                                        }
+                                        noteOptions={
+                                            <>
+                                                <li
+                                                    className="text-list-item text-red hover:text-dark-red"
+                                                    onClick={(e) =>
+                                                        handleRemoveNote(
+                                                            e,
+                                                            note.id
+                                                        )
+                                                    }
+                                                >
+                                                    Remove
+                                                </li>
+                                            </>
+                                        }
+                                    />
+                                )
+                            )}
                         </AnimatePresence>
                     </ul>
                 </div>

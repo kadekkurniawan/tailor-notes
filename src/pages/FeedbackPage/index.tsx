@@ -11,10 +11,14 @@ const FeedbackPage: React.FC = () => {
     return (
         <>
             <Navbar
-                mainButton="arrow-left"
+                mainButton="arrow_back"
                 onClickMainButton={() => navigate("/")}
                 pageName="Feedback"
             />
+
+            <p className="mt-20">
+                Sent me feedback at esakurniawan866@gmail.com
+            </p>
 
             <FeedbackForm />
         </>

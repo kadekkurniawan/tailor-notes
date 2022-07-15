@@ -1,3 +1,4 @@
 import listItemAnimations from "./listItemAnimations";
+import Delay from "./Delay";
 
-export { listItemAnimations };
+export { listItemAnimations, Delay };

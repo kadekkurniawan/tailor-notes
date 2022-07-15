@@ -10,6 +10,7 @@ import ClothingPage from "./ClothingPage";
 import TrashPage, { NotesTrashList, ClothingsTrashList } from "./TrashPage";
 import SettingsPage from "./SettingsPage";
 import FeedbackPage from "./FeedbackPage";
+import TestPage from "./TestPage";
 
 const Pages: React.FC = () => {
     return (
@@ -28,6 +29,7 @@ const Pages: React.FC = () => {
                 <Route path="clothings" element={<ClothingsTrashList />} />
             </Route>
             <Route path="/give-feedback" element={<FeedbackPage />} />
+            <Route path="/test" element={<TestPage />} />
             <Route path="*" element={<PageNotFound />} />
         </Routes>
     );

@@ -51,8 +51,9 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
         <>
             <ul className="grid-column-list mt-6">
                 <AnimatePresence>
-                    {filteredNotesTrash.map((note: Note) => (
+                    {filteredNotesTrash.map((note: Note, noteIndex: number) => (
                         <NoteListItem
+                            noteIndex={noteIndex}
                             key={note.id}
                             note={note}
                             onClickListItem={() =>

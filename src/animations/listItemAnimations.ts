@@ -1,22 +1,17 @@
-const initialAnimation = {
-    y: "-100%",
-    opacity: 0,
-};
-
-const openAnimation = {
-    y: 0,
-    opacity: 1,
-};
-
-const exitAnimation = {
-    y: "100%",
-    opacity: 0,
+const listItemVariants = {
+    show: {
+        y: 0,
+        opacity: 1,
+    },
+    hidden: { y: "-100%", opacity: 0 },
+    removed: { y: "100%", opacity: 0 },
 };
 
 const listItemAnimations = {
-    initial: initialAnimation,
-    animate: openAnimation,
-    exit: exitAnimation,
+    variants: listItemVariants,
+    initial: "hidden",
+    animate: "show",
+    exit: "removed",
 };
 
 export default listItemAnimations;

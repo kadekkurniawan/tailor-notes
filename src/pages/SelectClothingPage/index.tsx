@@ -3,7 +3,7 @@ import React, { useState, useMemo } from "react";
 import { NavigateFunction, useNavigate, Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useDebounce } from "react-use";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
     useClothingStore,
@@ -19,6 +19,7 @@ import { ClothingListItem } from "../../components/ListItem";
 import Icon from "../../components/Icon";
 import { NavbarWithInputSearch } from "../../components/Navbar";
 import { searchListItems } from "../../helpers";
+import { Delay, listItemAnimations } from "../../animations";
 import Undobar from "../../components/Undobar";
 
 const SelectClothingPage: React.FC = () => {
@@ -84,6 +85,8 @@ const SelectClothingPage: React.FC = () => {
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
+    const lastIndex = filteredClothings.length + 1;
+
     return (
         <>
             <NavbarWithInputSearch
@@ -105,52 +108,61 @@ const SelectClothingPage: React.FC = () => {
 
                     <ul className="mt-6 grid-column-list">
                         <AnimatePresence>
-                            {filteredClothings?.map((clothing: Clothing) => (
-                                <ClothingListItem
-                                    key={clothing.id}
-                                    clothing={clothing}
-                                    onClickListItem={() =>
-                                        handleAddNote(clothing)
-                                    }
-                                    clothingOptions={
-                                        <>
-                                            <li
-                                                className="text-list-item"
-                                                onClick={(e) =>
-                                                    handleViewClothing(
-                                                        e,
-                                                        clothing.id!
-                                                    )
-                                                }
-                                            >
-                                                Edit
-                                            </li>
-                                            <li
-                                                className="text-list-item text-red hover:text-dark-red"
-                                                onClick={(e) =>
-                                                    handleRemoveClothing(
-                                                        e,
-                                                        clothing.id!
-                                                    )
-                                                }
-                                            >
-                                                Remove
-                                            </li>
-                                        </>
-                                    }
-                                />
-                            ))}
+                            {filteredClothings.map(
+                                (clothing: Clothing, clothingIndex: number) => (
+                                    <ClothingListItem
+                                        clothingIndex={clothingIndex}
+                                        key={clothing.id}
+                                        clothing={clothing}
+                                        onClickListItem={() =>
+                                            handleAddNote(clothing)
+                                        }
+                                        clothingOptions={
+                                            <>
+                                                <li
+                                                    className="text-list-item"
+                                                    onClick={(e) =>
+                                                        handleViewClothing(
+                                                            e,
+                                                            clothing.id!
+                                                        )
+                                                    }
+                                                >
+                                                    Edit
+                                                </li>
+                                                <li
+                                                    className="text-list-item text-red hover:text-dark-red"
+                                                    onClick={(e) =>
+                                                        handleRemoveClothing(
+                                                            e,
+                                                            clothing.id!
+                                                        )
+                                                    }
+                                                >
+                                                    Remove
+                                                </li>
+                                            </>
+                                        }
+                                    />
+                                )
+                            )}
                         </AnimatePresence>
-
-                        <li className="small-padding hover:bg-slate-700 slate-700-border h-12 bg-slate-800 rounded-lg">
-                            <Link
-                                className="center-children-using-flex-box h-full"
-                                to="/clothing/creating-a-new-clothing"
+                        <Delay itemIndex={lastIndex} delay={200}>
+                            <motion.li
+                                {...listItemAnimations}
+                                className="small-padding hover:bg-slate-700 slate-700-border h-12 bg-slate-800 rounded-lg"
                             >
-                                <Icon type="add" className="text-teal" />
-                                <span className="semibold-text">Clothing</span>
-                            </Link>
-                        </li>
+                                <Link
+                                    className="center-children-using-flex-box h-full"
+                                    to="/clothing/creating-a-new-clothing"
+                                >
+                                    <Icon type="add" className="text-teal" />
+                                    <span className="semibold-text">
+                                        Clothing
+                                    </span>
+                                </Link>
+                            </motion.li>
+                        </Delay>
                     </ul>
                 </div>
             </main>
