@@ -20,7 +20,7 @@ const ClothingNavbar: React.FC<ClothingNavbarProps> = ({
     return (
         <nav className="navbar-container">
             <div className="flex items-center justify-between">
-                <div className="flex gap-3 max-w-xs px-2 w-1/2 items-center">
+                <div className="flex gap-3 max-w-xs px-2 w-2/3 items-center">
                     <button className="button-icon" onClick={onClickBack}>
                         <Icon type="arrow_back" />
                     </button>

@@ -12,9 +12,10 @@ import {
     Sizing,
 } from "../../store/clothing";
 import { findListItem, removeListItem } from "../../utils";
-import Icon from "../../components/Icon";
 import ClothingNavbar from "./ClothingNavbar";
 import SizingForm from "./SizingForm";
+import SizingListItem from "./SizingListItem";
+import { AnimatePresence } from "framer-motion";
 
 const ClothingPage: React.FC = () => {
     const { clothingId } = useParams();
@@ -114,27 +115,20 @@ const ClothingPage: React.FC = () => {
             <main className="mt-20 lg:mt-24">
                 <div className="container">
                     <ul className="grid-column-list">
-                        {modifiedClothing.sizings.map((sizing: Sizing) => (
-                            <li
-                                key={sizing.id}
-                                className="list-item-with-icon-at-right-side"
-                            >
-                                <span className="semibold-text">
-                                    {sizing.measuredPart}
-                                </span>
-                                <button
-                                    className="group button-icon"
-                                    onClick={() =>
-                                        handleDeleteSizing(sizing.id)
-                                    }
-                                >
-                                    <Icon
-                                        className="text-red group-hover:text-dark-red"
-                                        type="clear"
+                        <AnimatePresence>
+                            {modifiedClothing.sizings.map(
+                                (sizing: Sizing, sizingIndex: number) => (
+                                    <SizingListItem
+                                        key={sizing.id}
+                                        onClickDelete={() =>
+                                            handleDeleteSizing(sizing.id)
+                                        }
+                                        sizing={sizing}
+                                        sizingIndex={sizingIndex}
                                     />
-                                </button>
-                            </li>
-                        ))}
+                                )
+                            )}
+                        </AnimatePresence>
                     </ul>
                 </div>
             </main>

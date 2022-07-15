@@ -16,11 +16,13 @@ const FeedbackPage: React.FC = () => {
                 pageName="Feedback"
             />
 
-            <p className="mt-20">
-                Sent me feedback at esakurniawan866@gmail.com
-            </p>
-
-            <FeedbackForm />
+            <main>
+                <div className="container">
+                    {/* remve this text when feedback form are ready (it's worked) */}
+                    <p>Sent me feedback at esakurniawan866@gmail.com</p>
+                    <FeedbackForm />
+                </div>
+            </main>
         </>
     );
 };

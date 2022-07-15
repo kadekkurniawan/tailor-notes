@@ -4,7 +4,7 @@ import { useClickAway } from "react-use";
 import { motion } from "framer-motion";
 
 import { Note } from "../../store/note";
-import { listItemAnimations, Delay } from "../../animations";
+import { listItemAnimations, Delay } from "../../lib/animations";
 import Icon from "../Icon";
 import { AbsolutelyPositionOptionList } from "../Option";
 
@@ -44,7 +44,7 @@ const NoteListItem: React.FC<NoteListItemProps> = ({
     useClickAway(noteOptionsRef, () => setIsNoteOptionsOpen(false));
 
     return (
-        <Delay itemIndex={noteIndex} delay={200}>
+        <Delay itemIndex={noteIndex} delay={100}>
             <motion.li
                 {...listItemAnimations}
                 className="list-item-with-icon-at-right-side group-hover:bg-slate-400"

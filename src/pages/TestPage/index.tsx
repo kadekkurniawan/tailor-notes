@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
-import { Delay, listItemAnimations } from "../../animations";
+import { Delay, listItemAnimations } from "../../lib/animations";
 
 const TestPage: React.FC = () => {
     const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];

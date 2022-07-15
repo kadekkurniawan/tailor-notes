@@ -34,7 +34,7 @@ const NoteNavbar = React.forwardRef<any, NoteNavbarProps>(
         return (
             <nav ref={ref} className="navbar-container">
                 <div className="flex flex-wrap justify-between gap-4 items-center">
-                    <div className="flex items-center gap-3 w-1/2 max-w-xs">
+                    <div className="flex items-center gap-3 w-2/3 max-w-xs">
                         <button onClick={onClickBack} className="button-icon">
                             <Icon type="arrow_back" />
                         </button>
