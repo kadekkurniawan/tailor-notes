@@ -5,7 +5,7 @@ import { useDebounce } from "react-use";
 
 import { NoteListItem } from "../../components/ListItem";
 import Undobar from "../../components/Undobar";
-import { searchListItems } from "../../helpers";
+import { searchListItems } from "../../utils";
 import { useQuerySearch } from ".";
 import { useNoteStore, NoteStore, Note } from "../../store/note";
 import { AnimatePresence } from "framer-motion";

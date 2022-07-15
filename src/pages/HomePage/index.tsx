@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDebounce } from "react-use";
 import { AnimatePresence } from "framer-motion";
 
-import { searchListItems } from "../../helpers";
+import { searchListItems } from "../../utils";
 import { NoteListItem } from "../../components/ListItem";
 import { useNoteStore, Note, NoteStore } from "../../store/note";
 import Icon from "../../components/Icon";

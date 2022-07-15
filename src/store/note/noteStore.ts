@@ -1,7 +1,7 @@
 import create from "zustand";
 import { persist, devtools } from "zustand/middleware";
 
-import { removeListItem, replaceListItem } from "../../helpers";
+import { removeListItem, replaceListItem } from "../../utils";
 import { Note, NoteStore } from "./index";
 
 const noteStore = (set: any, get: any): NoteStore => ({

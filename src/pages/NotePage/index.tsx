@@ -13,7 +13,7 @@ import { useNoteStore, NoteStore, Note } from "../../store/note";
 import SizingListItem from "./SizingListItem";
 import NoteNavbar from "./NoteNavbar";
 import Error from "../../components/Error";
-import { findListItem, replaceListItem } from "../../helpers";
+import { findListItem, replaceListItem } from "../../utils";
 import Label from "../../components/Label";
 
 const NotePage: React.FC = () => {

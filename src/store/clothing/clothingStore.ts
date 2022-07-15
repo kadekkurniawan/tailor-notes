@@ -2,7 +2,7 @@ import create from "zustand";
 import { persist, devtools } from "zustand/middleware";
 import { v4 as uuidv4 } from "uuid";
 
-import { removeListItem, replaceListItem } from "../../helpers";
+import { removeListItem, replaceListItem } from "../../utils";
 import { Clothing, ClothingStore } from "./index";
 
 const initialClothings: Clothing[] = [

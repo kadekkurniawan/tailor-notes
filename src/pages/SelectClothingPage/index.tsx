@@ -18,7 +18,7 @@ import { useNoteStore, Note, NoteStore } from "../../store/note";
 import { ClothingListItem } from "../../components/ListItem";
 import Icon from "../../components/Icon";
 import { NavbarWithInputSearch } from "../../components/Navbar";
-import { searchListItems } from "../../helpers";
+import { searchListItems } from "../../utils";
 import { Delay, listItemAnimations } from "../../animations";
 import Undobar from "../../components/Undobar";
 

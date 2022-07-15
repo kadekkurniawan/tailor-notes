@@ -9,7 +9,7 @@ import {
     Clothing,
 } from "../../store/clothing";
 import Undobar from "../../components/Undobar";
-import { searchListItems } from "../../helpers";
+import { searchListItems } from "../../utils";
 import { ClothingListItem } from "../../components/ListItem";
 import { useQuerySearch } from ".";
 import { AnimatePresence } from "framer-motion";
