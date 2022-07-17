@@ -96,7 +96,7 @@ const ClothingPage: React.FC = () => {
     };
 
     const isClothingBeingModified =
-        clothing === modifiedClothing ? true : false;
+        clothing === modifiedClothing ? false : true;
 
     useBeforeUnload(
         isClothingBeingModified,
