@@ -15,6 +15,7 @@ import NoteNavbar from "./NoteNavbar";
 import Error from "../../components/Error";
 import { findListItem, replaceListItem } from "../../utils";
 import Label from "../../components/Label";
+import { toast } from "react-toastify";
 
 const NotePage: React.FC = () => {
     const navigate: NavigateFunction = useNavigate();
@@ -51,6 +52,15 @@ const NotePage: React.FC = () => {
         });
     };
 
+    const handleUserBack = () => {
+        if (currentNote.customerName === "") {
+            toast.info("Please provide a customer name");
+            return;
+        }
+
+        navigate("/");
+    };
+
     const [navbarRef, { height }] = useMeasure();
 
     if (currentNote === undefined)
@@ -72,7 +82,7 @@ const NotePage: React.FC = () => {
             <NoteNavbar
                 ref={navbarRef}
                 modifyClothingProperties={modifyClothingProperties}
-                onClickBack={() => navigate("/")}
+                onClickBack={handleUserBack}
                 modifyNoteProperties={modifyNoteProperties}
                 note={currentNote}
             />
