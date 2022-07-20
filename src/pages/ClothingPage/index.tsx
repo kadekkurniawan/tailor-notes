@@ -72,6 +72,16 @@ const ClothingPage: React.FC = () => {
     };
 
     const handleSaveModifiedClothing = () => {
+        if (modifiedClothing.type) {
+            toast.info("Please provide a clothing name");
+            return;
+        }
+
+        if (modifiedClothing.sizings.length === 0) {
+            toast.info("Please at least provide one measured part of body");
+            return;
+        }
+
         if (isCreatingANewClothing) {
             addClothing(modifiedClothing);
             toast.success("Successfully added");

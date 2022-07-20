@@ -24,7 +24,7 @@ const SizingForm: React.FC<SizingFormProps> = ({
                     className="bg-slate-900"
                     value={measuredPart}
                     onChange={(e) => setMeasuredPart(e.target.value)}
-                    placeholder="Add measured part of body here..."
+                    placeholder="Add measured part of body here... (e.g. neck around, chest around, etc)"
                 />
                 <button className="button-icon h-11 group">
                     <Icon
