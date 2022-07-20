@@ -147,7 +147,7 @@ const SelectClothingPage: React.FC = () => {
                                 )
                             )}
                         </AnimatePresence>
-                        <Delay itemIndex={lastIndex} delay={200}>
+                        <Delay itemIndex={lastIndex} delay={100}>
                             <motion.li
                                 {...listItemAnimations}
                                 className="small-padding hover:bg-slate-700 slate-700-border h-12 bg-slate-800 rounded-lg"
