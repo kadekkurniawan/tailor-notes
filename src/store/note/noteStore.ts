@@ -1,10 +1,13 @@
-import create from "zustand";
+import create, { GetState, SetState } from "zustand";
 import { persist, devtools } from "zustand/middleware";
 
-import { removeListItem, replaceListItem } from "../../utils";
+import { removeListItem, replaceListItem, findListItem } from "../../utils";
 import { Note, NoteStore } from "./index";
 
-const noteStore = (set: any, get: any): NoteStore => ({
+const noteStore = (
+    set: SetState<NoteStore>,
+    get: GetState<NoteStore>
+): NoteStore => ({
     notes: {
         data: [],
         trash: [],
@@ -30,9 +33,7 @@ const noteStore = (set: any, get: any): NoteStore => ({
         }));
     },
     removeNoteById: (noteId: string) => {
-        const selectedNote: Note = get().notes.data.find(
-            (note: Note) => note.id === noteId
-        );
+        const selectedNote: Note = findListItem(get().notes.data, noteId);
 
         set((state: NoteStore) => ({
             notes: {
@@ -45,7 +46,7 @@ const noteStore = (set: any, get: any): NoteStore => ({
         }));
     },
     undoRemoveNote: () => {
-        const previouslyRemovedNote: Note = get().notes.trash.at(0);
+        const previouslyRemovedNote: Note = get().notes.trash.at(0)!;
 
         set((state: NoteStore) => ({
             notes: {
@@ -58,9 +59,7 @@ const noteStore = (set: any, get: any): NoteStore => ({
         }));
     },
     restoreNoteById: (noteId: string) => {
-        const selectedNote: Note = get().notes.trash.find(
-            (note: Note) => note.id === noteId
-        );
+        const selectedNote: Note = findListItem(get().notes.trash, noteId);
 
         set((state: NoteStore) => ({
             notes: {
@@ -73,7 +72,7 @@ const noteStore = (set: any, get: any): NoteStore => ({
         }));
     },
     undoRestoreNote: () => {
-        const previouslyRestoredNote: Note = get().notes.data.at(0);
+        const previouslyRestoredNote: Note = get().notes.data.at(0)!;
 
         set((state: NoteStore) => ({
             notes: {

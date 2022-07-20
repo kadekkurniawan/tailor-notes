@@ -1,8 +1,8 @@
-import create from "zustand";
+import create, { GetState, SetState } from "zustand";
 import { persist, devtools } from "zustand/middleware";
 import { v4 as uuidv4 } from "uuid";
 
-import { removeListItem, replaceListItem } from "../../utils";
+import { removeListItem, replaceListItem, findListItem } from "../../utils";
 import { Clothing, ClothingStore } from "./index";
 
 const initialClothings: Clothing[] = [
@@ -58,7 +58,10 @@ const initialClothings: Clothing[] = [
     },
 ];
 
-const clothingStore = (set: any, get: any): ClothingStore => ({
+const clothingStore = (
+    set: SetState<ClothingStore>,
+    get: GetState<ClothingStore>
+): ClothingStore => ({
     clothings: {
         data: initialClothings,
         trash: [],
@@ -87,8 +90,9 @@ const clothingStore = (set: any, get: any): ClothingStore => ({
         }));
     },
     removeClothingById: (clothingId: string) => {
-        const selectedClothing: Clothing = get().clothings.data.find(
-            (clothing: Clothing) => clothing.id === clothingId
+        const selectedClothing: Clothing = findListItem(
+            get().clothings.data,
+            clothingId
         );
 
         set((state: ClothingStore) => ({
@@ -102,7 +106,8 @@ const clothingStore = (set: any, get: any): ClothingStore => ({
         }));
     },
     undoRemoveClothing: () => {
-        const previouslyRemovedClothing: Clothing = get().clothings.trash.at(0);
+        const previouslyRemovedClothing: Clothing =
+            get().clothings.trash.at(0)!;
 
         set((state: ClothingStore) => ({
             clothings: {
@@ -115,10 +120,10 @@ const clothingStore = (set: any, get: any): ClothingStore => ({
         }));
     },
     restoreClothingById: (clothingId: string) => {
-        const selectedClothing: Clothing = get().clothings.trash.find(
-            (clothing: Clothing) => clothing.id === clothingId
+        const selectedClothing: Clothing = findListItem(
+            get().clothings.trash,
+            clothingId
         );
-
         set((state: ClothingStore) => ({
             clothings: {
                 data: [selectedClothing, ...state.clothings.data],
@@ -130,7 +135,8 @@ const clothingStore = (set: any, get: any): ClothingStore => ({
         }));
     },
     undoRestoreClothing: () => {
-        const previouslyRestoredClothing: Clothing = get().clothings.data.at(0);
+        const previouslyRestoredClothing: Clothing =
+            get().clothings.data.at(0)!;
 
         set((state: ClothingStore) => ({
             clothings: {
