@@ -6,21 +6,13 @@ import Sidebar from "../../components/Sidebar";
 import { NavbarWithInputSearch } from "../../components/Navbar";
 import NotesTrashList from "./NotesTrashList";
 import ClothingsTrashList from "./ClothingsTrashList";
-import { ClothingStore, useClothingStore } from "../../store/clothing";
-import { NoteStore, useNoteStore } from "../../store/note";
 
 const TrashsPage: React.FC = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
     const [querySearch, setQuerySearch] = useState("");
 
-    const clothings = useClothingStore(
-        (state: ClothingStore) => state.clothings
-    );
-
     const location = useLocation();
-
-    const notes = useNoteStore((state: NoteStore) => state.notes);
 
     return (
         <>
@@ -48,7 +40,7 @@ const TrashsPage: React.FC = () => {
                                 }`}
                                 to="/trash/notes"
                             >
-                                {notes.trash.length > 1 ? "Notes" : "Note"}
+                                Notes
                             </Link>
                         </div>
                         <div className={`grow `}>
@@ -60,9 +52,7 @@ const TrashsPage: React.FC = () => {
                                 }`}
                                 to="/trash/clothings"
                             >
-                                {clothings.trash.length > 1
-                                    ? "Clothings"
-                                    : "Clothing"}
+                                Clothings
                             </Link>
                         </div>
                     </nav>
