@@ -72,7 +72,7 @@ const ClothingPage: React.FC = () => {
     };
 
     const handleSaveModifiedClothing = () => {
-        if (modifiedClothing.type) {
+        if (modifiedClothing.type === "") {
             toast.info("Please provide a clothing name");
             return;
         }
