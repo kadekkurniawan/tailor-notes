@@ -9,6 +9,7 @@ import { searchListItems } from "../../utils";
 import { useQuerySearch } from ".";
 import { useNoteStore, NoteStore, Note } from "../../store/note";
 import { AnimatePresence } from "framer-motion";
+import Error from "../../components/Error";
 
 interface NotesTrashListProps {
     querySearch?: string;
@@ -44,6 +45,9 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
         e.stopPropagation();
         deleteNoteFromTrashById(noteId);
     };
+
+    const isNoteFound =
+        quarySearch !== "" && filteredNotesTrash.length === 0 ? true : false;
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
@@ -85,6 +89,12 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
                     ))}
                 </AnimatePresence>
             </ul>
+
+            <Error
+                open={isNoteFound}
+                title="Note not found"
+                description={<p>Perhaps you already delete it permanently?</p>}
+            />
 
             <Undobar
                 isUndobarOpen={isUndobarOpen}

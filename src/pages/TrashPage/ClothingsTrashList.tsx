@@ -12,6 +12,7 @@ import Undobar from "../../components/Undobar";
 import { searchListItems } from "../../utils";
 import { ClothingListItem } from "../../components/ListItem";
 import { useQuerySearch } from ".";
+import Error from "../../components/Error";
 import { AnimatePresence } from "framer-motion";
 
 const ClothingsTrashList: React.FC = () => {
@@ -38,6 +39,11 @@ const ClothingsTrashList: React.FC = () => {
         () => searchListItems(clothings.trash, "type", querySearch),
         [clothings, querySearch]
     );
+
+    const isClothingFound =
+        querySearch !== "" && filteredClothingsTrash.length === 0
+            ? true
+            : false;
 
     const [isUndobarOpen, setIsUndobarOpen] = useState<boolean>(false);
 
@@ -88,6 +94,12 @@ const ClothingsTrashList: React.FC = () => {
                     )}
                 </AnimatePresence>
             </ul>
+
+            <Error
+                open={isClothingFound}
+                title="Clothing not found"
+                description={<p>Perhaps you already delete it permanently?</p>}
+            />
 
             <Undobar
                 isUndobarOpen={isUndobarOpen}

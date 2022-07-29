@@ -11,6 +11,7 @@ import Icon from "../../components/Icon";
 import Sidebar from "../../components/Sidebar";
 import { NavbarWithInputSearch } from "../../components/Navbar";
 import Undobar from "../../components/Undobar";
+import Error from "../../components/Error";
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
@@ -38,6 +39,9 @@ const HomePage: React.FC = () => {
         () => searchListItems(notes.data, "customerName", querySearch),
         [querySearch, notes]
     );
+
+    const isNoteFound =
+        querySearch !== "" && filteredNotes.length === 0 ? true : false;
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
@@ -98,6 +102,22 @@ const HomePage: React.FC = () => {
                             )}
                         </AnimatePresence>
                     </ul>
+                    <Error
+                        open={isNoteFound}
+                        title="Note not found"
+                        description={
+                            <p>
+                                Perhaps you already remove it?. if yes check the{" "}
+                                <Link
+                                    to="/trash/notes"
+                                    className="underline text-blue-500"
+                                >
+                                    trash page
+                                </Link>{" "}
+                                then
+                            </p>
+                        }
+                    />
                 </div>
             </main>
 
