@@ -46,7 +46,7 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
         deleteNoteFromTrashById(noteId);
     };
 
-    const isNoteFound =
+    const noteNotFound =
         quarySearch !== "" && filteredNotesTrash.length === 0 ? true : false;
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
@@ -91,7 +91,7 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
             </ul>
 
             <Error
-                open={isNoteFound}
+                open={noteNotFound}
                 title="Note not found"
                 description={<p>Perhaps you already delete it permanently?</p>}
             />

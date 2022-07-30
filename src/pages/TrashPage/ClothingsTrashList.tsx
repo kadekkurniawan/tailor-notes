@@ -40,7 +40,7 @@ const ClothingsTrashList: React.FC = () => {
         [clothings, querySearch]
     );
 
-    const isClothingFound =
+    const clothingNotFound =
         querySearch !== "" && filteredClothingsTrash.length === 0
             ? true
             : false;
@@ -96,7 +96,7 @@ const ClothingsTrashList: React.FC = () => {
             </ul>
 
             <Error
-                open={isClothingFound}
+                open={clothingNotFound}
                 title="Clothing not found"
                 description={<p>Perhaps you already delete it permanently?</p>}
             />

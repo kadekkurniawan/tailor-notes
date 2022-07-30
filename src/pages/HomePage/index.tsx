@@ -40,7 +40,7 @@ const HomePage: React.FC = () => {
         [querySearch, notes]
     );
 
-    const isNoteFound =
+    const noteNotFound =
         querySearch !== "" && filteredNotes.length === 0 ? true : false;
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
@@ -103,7 +103,7 @@ const HomePage: React.FC = () => {
                         </AnimatePresence>
                     </ul>
                     <Error
-                        open={isNoteFound}
+                        open={noteNotFound}
                         title="Note not found"
                         description={
                             <p>
