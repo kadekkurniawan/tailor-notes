@@ -76,6 +76,7 @@ const HomePage: React.FC = () => {
                             {filteredNotes.map(
                                 (note: Note, noteIndex: number) => (
                                     <NoteListItem
+                                        querySearch={querySearch}
                                         noteIndex={noteIndex}
                                         key={note.id}
                                         note={note}

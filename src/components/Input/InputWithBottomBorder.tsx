@@ -30,6 +30,7 @@ interface InputWithBottomBorderProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
     id?: string;
+    autoFocus: boolean;
 }
 
 const InputWithBottomBorder: React.FC<InputWithBottomBorderProps> = ({
@@ -37,11 +38,13 @@ const InputWithBottomBorder: React.FC<InputWithBottomBorderProps> = ({
     onChange,
     placeholder,
     id,
+    autoFocus = false,
     type,
     className,
 }) => {
     return (
         <input
+            autoFocus={autoFocus}
             type={type}
             id={id}
             className={`w-full focus:border-indigo text-lg text-slate-300 font-semibold border-slate-800 border-b border-solid outline-none py-2 px-1 transition placeholder-slate-500 bg-slate-900 font-sans ${className}`}

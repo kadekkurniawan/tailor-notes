@@ -40,6 +40,7 @@ const NoteNavbar = React.forwardRef<any, NoteNavbarProps>(
                         </button>
 
                         <InputWithBottomBorder
+                            autoFocus={note.customerName === ""}
                             onChange={(
                                 e: React.ChangeEvent<HTMLInputElement>
                             ) =>

@@ -26,6 +26,7 @@ const ClothingNavbar: React.FC<ClothingNavbarProps> = ({
                     </button>
 
                     <InputWithBottomBorder
+                        autoFocus={clothingType === ""}
                         value={clothingType}
                         placeholder="Clothing type..."
                         onChange={onChangeClothingType}

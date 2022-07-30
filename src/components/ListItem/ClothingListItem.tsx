@@ -8,9 +8,11 @@ import { AbsolutelyPositionOptionList } from "../../components/Option";
 import { listItemAnimations } from "../../animations";
 import { Clothing } from "../../store/clothing";
 import { Delay } from "../../animations";
+import Highlighter from "react-highlight-words";
 
 interface ClothingListItemProps {
     onClickListItem: () => void;
+    querySearch: string;
     clothing: Clothing;
     clothingIndex: number;
     clothingOptions: React.ReactNode;
@@ -21,6 +23,7 @@ const ClothingListItem: React.FC<ClothingListItemProps> = ({
     clothing,
     clothingIndex,
     clothingOptions,
+    querySearch,
 }) => {
     const handleToggleClothingOptionsVisibility = (
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -43,9 +46,17 @@ const ClothingListItem: React.FC<ClothingListItemProps> = ({
                 onClick={onClickListItem}
                 className="list-item-with-icon-at-right-side h-12"
             >
-                <span className="semibold-text text-slate-300">
-                    {clothing.type}
-                </span>
+                <Highlighter
+                    highlightStyle={{
+                        color: "#f8fafc",
+                        backgroundColor: "#d97706",
+                    }}
+                    highlightClassName="text-indigo"
+                    className="semibold-text text-slate-300"
+                    searchWords={[querySearch]}
+                    autoEscape={true}
+                    textToHighlight={clothing.type}
+                />
 
                 <div ref={clothingOptionsRef}>
                     <button

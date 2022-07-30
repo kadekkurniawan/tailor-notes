@@ -6,16 +6,12 @@ import { useDebounce } from "react-use";
 import { NoteListItem } from "../../components/ListItem";
 import Undobar from "../../components/Undobar";
 import { searchListItems } from "../../utils";
-import { useQuerySearch } from ".";
 import { useNoteStore, NoteStore, Note } from "../../store/note";
 import { AnimatePresence } from "framer-motion";
 import Error from "../../components/Error";
+import { useOutletContext } from "react-router-dom";
 
-interface NotesTrashListProps {
-    querySearch?: string;
-}
-
-const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
+const NotesTrashList: React.FC = () => {
     const { notes, restoreNoteById, undoRestoreNote, deleteNoteFromTrashById } =
         useNoteStore((state: NoteStore) => state);
 
@@ -31,11 +27,11 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
         setIsUndobarOpen(true);
     };
 
-    const quarySearch = useQuerySearch();
+    const querySearch: string = useOutletContext();
 
     const filteredNotesTrash = useMemo(
-        () => searchListItems(notes.trash, "customerName", quarySearch),
-        [notes, quarySearch]
+        () => searchListItems(notes.trash, "customerName", querySearch),
+        [notes, querySearch]
     );
 
     const handleDeleteNote = (
@@ -47,7 +43,12 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
     };
 
     const noteNotFound =
-        quarySearch !== "" && filteredNotesTrash.length === 0 ? true : false;
+        querySearch !== "" && filteredNotesTrash.length === 0 ? true : false;
+
+    const handleUndoRestoreNote = () => {
+        undoRestoreNote();
+        setIsUndobarOpen(false);
+    };
 
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
@@ -57,6 +58,7 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
                 <AnimatePresence>
                     {filteredNotesTrash.map((note: Note, noteIndex: number) => (
                         <NoteListItem
+                            querySearch={querySearch}
                             noteIndex={noteIndex}
                             key={note.id}
                             note={note}
@@ -99,7 +101,7 @@ const NotesTrashList: React.FC<NotesTrashListProps> = ({ querySearch }) => {
             <Undobar
                 isUndobarOpen={isUndobarOpen}
                 message={<p>Note restored</p>}
-                onClickUndo={() => undoRestoreNote()}
+                onClickUndo={handleUndoRestoreNote}
             />
         </>
     );

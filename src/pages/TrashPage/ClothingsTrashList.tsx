@@ -11,7 +11,7 @@ import {
 import Undobar from "../../components/Undobar";
 import { searchListItems } from "../../utils";
 import { ClothingListItem } from "../../components/ListItem";
-import { useQuerySearch } from ".";
+import { useOutletContext } from "react-router-dom";
 import Error from "../../components/Error";
 import { AnimatePresence } from "framer-motion";
 
@@ -33,7 +33,7 @@ const ClothingsTrashList: React.FC = () => {
         setIsUndobarOpen(true);
     };
 
-    const querySearch = useQuerySearch();
+    const querySearch: string = useOutletContext();
 
     const filteredClothingsTrash: Clothing[] = useMemo(
         () => searchListItems(clothings.trash, "type", querySearch),
@@ -47,6 +47,11 @@ const ClothingsTrashList: React.FC = () => {
 
     const [isUndobarOpen, setIsUndobarOpen] = useState<boolean>(false);
 
+    const handleUndoRestoreClothing = () => {
+        undoRestoreClothing();
+        setIsUndobarOpen(false);
+    };
+
     useDebounce(() => setIsUndobarOpen(false), 5000, [isUndobarOpen]);
 
     return (
@@ -56,6 +61,7 @@ const ClothingsTrashList: React.FC = () => {
                     {filteredClothingsTrash.map(
                         (clothing: Clothing, clothingIndex: number) => (
                             <ClothingListItem
+                                querySearch={querySearch}
                                 clothingIndex={clothingIndex}
                                 clothingOptions={
                                     <>
@@ -104,7 +110,7 @@ const ClothingsTrashList: React.FC = () => {
             <Undobar
                 isUndobarOpen={isUndobarOpen}
                 message={<p>Clothing restored</p>}
-                onClickUndo={undoRestoreClothing}
+                onClickUndo={handleUndoRestoreClothing}
             />
         </>
     );

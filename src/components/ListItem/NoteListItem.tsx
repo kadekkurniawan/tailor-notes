@@ -7,15 +7,20 @@ import { Note } from "../../store/note";
 import { listItemAnimations, Delay } from "../../animations";
 import Icon from "../Icon";
 import { AbsolutelyPositionOptionList } from "../Option";
+import Highlighter from "react-highlight-words";
+
+// TODO add highlight text when search
 
 interface NoteListItemProps {
     noteIndex: number;
+    querySearch: string;
     note: Note;
     onClickListItem: () => void;
     noteOptions: React.ReactNode;
 }
 
 const NoteListItem: React.FC<NoteListItemProps> = ({
+    querySearch,
     noteIndex,
     note,
     onClickListItem,
@@ -51,10 +56,21 @@ const NoteListItem: React.FC<NoteListItemProps> = ({
                 onClick={onClickListItem}
             >
                 <div className="">
-                    <h2>{note.customerName}</h2>
+                    <Highlighter
+                        highlightStyle={{
+                            color: "#f8fafc",
+                            backgroundColor: "#d97706",
+                        }}
+                        className="font-semibold text-lg text-slate-300 font-sans"
+                        searchWords={[querySearch]}
+                        autoEscape={true}
+                        textToHighlight={note.customerName}
+                    />
+
                     <p className=" text-xs ">
                         Clothing type: {note.clothing.type}
                     </p>
+
                     <p className="text-xs ">
                         Last modified:{" "}
                         {new Date(note.lastModified).toLocaleDateString(

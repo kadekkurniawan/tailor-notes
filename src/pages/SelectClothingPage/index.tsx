@@ -111,6 +111,7 @@ const SelectClothingPage: React.FC = () => {
                             {filteredClothings.map(
                                 (clothing: Clothing, clothingIndex: number) => (
                                     <ClothingListItem
+                                        querySearch={querySearch}
                                         clothingIndex={clothingIndex}
                                         key={clothing.id}
                                         clothing={clothing}

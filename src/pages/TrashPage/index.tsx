@@ -64,10 +64,6 @@ const TrashsPage: React.FC = () => {
     );
 };
 
-const useQuerySearch = () => {
-    return useOutletContext<string>();
-};
-
 export default TrashsPage;
 
-export { useQuerySearch, ClothingsTrashList, NotesTrashList };
+export { ClothingsTrashList, NotesTrashList };
