@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link, Outlet, useLocation, useOutletContext } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 import Sidebar from "../../components/Sidebar";
 import { NavbarWithInputSearch } from "../../components/Navbar";
