@@ -1,6 +1,6 @@
 # Debts Tracker
 
-> A Website for tailor to store their customer clothing measurements
+> A Website for tailor to store their customer clothing measurements.
 > Live demo (here.)[https://tailor-notes.vercel.app/]
 
 ## General information
