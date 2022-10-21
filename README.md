@@ -5,7 +5,7 @@
 
 ## General information
 
-The goal of this project is, to create a place for tailor to store their customer clothing measurements, like Nect around, Sleeve Length, Cheast around, etc. and can search for that customer easily in the future
+The goal of this project is, to create a place for tailor to store their customer clothing measurements, like Nect around, Sleeve Length, Cheast around, etc. and can search for that customer clothing measurements easily in the future
 
 ## Technologies Used
 
