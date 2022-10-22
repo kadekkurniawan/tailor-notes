@@ -1,7 +1,7 @@
-# Debts Tracker
+# Tailor Notes
 
 > A Website for tailor to store their customer clothing measurements.
-> Live demo (here.)[https://tailor-notes.vercel.app/]
+> Live demo [here.](https://tailor-notes.vercel.app/)
 
 ## General information
 
@@ -17,7 +17,7 @@ The goal of this project is, to create a place for tailor to store their custome
 
 ## Setup
 
-After you fork this project, navige to the repository, and then open the command line, and install the necessary packages:
+After you fork this project, navige to the project, and then open the command line, and install the necessary packages:
 
 ```sh
 npm install
